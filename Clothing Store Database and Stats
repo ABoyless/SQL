@@ -1,0 +1,31 @@
+--Create clothing store database
+
+CREATE TABLE clothing_store (id INTEGER PRIMARY KEY, item TEXT, quantity INTEGER, price INTEGER, size TEXT);
+
+INSERT INTO clothing_store VALUES(01, "shirt", 20, 10.00, "M");
+INSERT INTO clothing_store VALUES(02,"jeans", 15, 40.00, "M");
+INSERT INTO clothing_store VALUES(03,"slacks",8, 50.00, "L");
+INSERT INTO clothing_store VALUES(04,"sweater", 12, 25.00, "S");
+INSERT INTO clothing_store VALUES(05,"shoes",5, 30.00, "M");
+INSERT INTO clothing_store VALUES(06,"shorts", 30, 25.00, "M");
+INSERT INTO clothing_store VALUES(07,"socks", 50, 6.99, "S");
+INSERT INTO clothing_store VALUES(08,"underwear",20, 8.99, "M");
+INSERT INTO clothing_store VALUES(09,"dresses", 5, 70.00, "S");
+INSERT INTO clothing_store VALUES(10,"sportsbra", 10, 15.00, "L");
+INSERT INTO clothing_store VALUES(11,"leggings",28, 20.00, "M"); 
+INSERT INTO clothing_store VALUES(12,"joggers",15, 30.00, "M");
+INSERT INTO clothing_store VALUES(13,"jackets", 6, 50.00, "L");
+INSERT INTO clothing_store VALUES(14,"belts", 10, 12.00, "M");
+INSERT INTO clothing_store VALUES(15,"hats", 25, 11.99, "S");
+
+--display database ordered by price
+Select * from clothing_store order by price;
+
+--how many total items available for sale?
+select sum(quantity) from clothing_store
+
+--what is the average price for an item at this store?
+Select avg(price) from clothing_store;
+
+--what items have 20 or more in stock? 
+select * from clothing_store where quantity >= 20;
