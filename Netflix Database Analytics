@@ -1,0 +1,36 @@
+#In this SQL code, I'm querying a database in PostgreSQL that's holding Nexflix data to answer questions about the data.
+
+--figure out which attribute you'd use to be able to join the two tables
+Select 
+people.show_id, people.director, title.type, title.title
+from "CharlotteChaze/BreakIntoTech"."netflix_people" AS people
+Left Join "CharlotteChaze/BreakIntoTech"."netflix_titles_info" AS title 
+ON people.show_id = title.show_id;
+
+--How many movie titles are there in the database? (movies only, not tv shows)
+select count(*) 
+from "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+where type = 'Movie';
+
+--When was the most recent batch of tv shows and/or movies added to the database?
+select max(date_added) 
+from "CharlotteChaze/BreakIntoTech".netflix_titles_info;
+
+--List all the movies and tv shows in alphabetical order.
+select * 
+from "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+order by title asc;
+
+--Who was the Director for the movie Bright Star?
+select people.director, title.title
+from "CharlotteChaze/BreakIntoTech"."netflix_people" AS people
+LEFT JOIN "CharlotteChaze/BreakIntoTech"."netflix_titles_info" AS title
+ON people.show_id = title.show_id
+Where title.title = 'Bright Star';
+
+--What is the oldest movie in the database and what year was it made?
+select title, release_year
+from  "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+Where type = 'Movie'
+order by release_year asc
+Limit 1;
