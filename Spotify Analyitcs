@@ -60,3 +60,9 @@ Select artist_name, track_name, popularity, duration_ms/60000 AS Minutes
 from BIT_DB.Spotifydata
 order by popularity desc; 
 
+-- want to see songs that are above 90 in popularity and 3 minutes or longer
+
+Select artist_name, track_name, popularity, duration_ms/60000 AS Minutes
+from BIT_DB.Spotifydata
+Where popularity >= 90 AND Minutes >= 3
+Order by Minutes Asc; 
