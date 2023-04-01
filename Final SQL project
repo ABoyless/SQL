@@ -48,3 +48,22 @@ ON emp.Employeeid = cust.SupportRepid
 JOIN chinook.invoices AS inv
 ON inv.Customerid = cust.Customerid; 
 
+-- 8. How many Invoices were there in 2009?
+
+Select count(InvoiceId) AS total2009
+FROM chinook.invoices
+WHERE InvoiceDate BETWEEN '2009-01-01' AND '2009-12-31';
+
+-- 9. what are the total sales for 2009?
+
+SELECT sum(Total) AS TotalSales_2009
+FROM chinook.invoices
+WHERE InvoiceDate BETWEEN '2009-01-01' AND '2009-12-31'; 
+
+-- 10. Write a query that includes the purchased track name with each invoice line ID.
+
+SELECT inv.InvoiceLineId, tracks.name
+FROM chinook.invoice_items AS inv
+JOIN chinook.tracks AS tracks
+ON inv.Trackid = tracks.Trackid
+Order by InvoiceLineId ASC; 
